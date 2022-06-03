@@ -14,7 +14,7 @@ module.exports = class Posts {
             if (!postsDetails) {
                 console.log("Data is not Present");
                 res.status(404).send("Response error");
-            } else {
+            } else { 
                 res.status(200).send(postsDetails);
             }
         } catch (error) {
