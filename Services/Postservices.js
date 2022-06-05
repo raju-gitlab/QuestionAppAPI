@@ -17,4 +17,13 @@ module.exports = class postService {
             console.log("Response Not Initited");
         }
     }
+    static async UpdatePost(data) {
+        try {
+            const result = MovieSchema.updateOne({_id : data.Id},{$set :{name : "New Updateed Name"}});
+            console.log(result);
+            return result;
+        } catch (error) {
+            console.log("Response Not Initited");
+        }
+    }
 }

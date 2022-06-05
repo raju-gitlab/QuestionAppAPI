@@ -1,15 +1,14 @@
 const express = require('express');
-const getPosts = require('../APIs/HomeApis');
-const getURL = require('../APIs/HomeApis');
-const setData = require('../APIs/HomeApis');
 const postcontrol = require('../APIs/HomeApis');
+const authControl = require('../APIs/Auth');
 // const Auth = require('../APIs/Auth');
 
 const routess = express.Router();
 
 routess.get('/getPosts',postcontrol.allPosts);
 routess.get('/getURL/:Id', postcontrol.postById);
-routess.post('/setData', setData);
-// routess.get('/Auth/Login', Auth);
+routess.post('/update', postcontrol.UpdateData);
+routess.get('/login',authControl.Login);
+routess.post('/Register',authControl.Register);
 
 module.exports = routess;

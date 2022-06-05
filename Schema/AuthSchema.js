@@ -1,22 +1,25 @@
-const { default: mongoose } = require("mongoose");
+const { booleanParser } = require("config/parser");
+const { string } = require("joi");
+const { default: mongoose, Mongoose } = require("mongoose");
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
-const registerSchema = Schema({
+const Register = Schema({
     UserName : String,
     Email : String,
     Password : String,
     PasswordSalt : String,
-    Createdat : Date,
-    Modifiedat : Date,
+    Createdate : Date,
+    Modifiedate : Date,
     IsActive : Boolean,
     IsDeleted : Boolean,
     IsVerified : Boolean
 });
-// const loginSchema = new mongoose.Schema({
-//     Email : String,
-//     Password : String,
-// });
+
+const validateEmail = Schema({
+    Email : String,
+    IsDeleted : Boolean
+})
 
 const MovieS =  Schema({
     name : String,
@@ -24,4 +27,4 @@ const MovieS =  Schema({
 });
 
 module.exports = MovieSchema = mongoose.model("movie",MovieS);
-module.exports.registerSchema = registerSchema;
+module.exports = registerSchema = mongoose.model("user",Register);
