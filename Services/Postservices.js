@@ -2,7 +2,7 @@ const MovieSchema = require('../Schema/AuthSchema');
 module.exports = class postService {
     static async GetPost() {
         try {
-            const posts = MovieSchema.find();
+            const posts = MovieSchema.find().select(["Email","Password"]);
             return posts;
         } catch (error) {
             console.log("Response not initiated");

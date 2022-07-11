@@ -2,9 +2,9 @@ const registerSchema = require('../Schema/AuthSchema');
 
 module.exports = class validateEmail {
     static async EmaliExintance(params) {
-        console.log("Control Reached", params.Email);
+        console.log("Control Reached", params.email);
         try {
-            const result = await registerSchema.findOne({Email : params.Email});
+            const result = await registerSchema.findOne({Email : params.email});
             if(!result) {
                 return true;
             }             

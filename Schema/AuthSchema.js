@@ -1,30 +1,61 @@
-const { booleanParser } = require("config/parser");
 const { string } = require("joi");
-const { default: mongoose, Mongoose } = require("mongoose");
+const { default: mongoose } = require("mongoose");
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 const Register = Schema({
-    UserName : String,
-    Email : String,
-    Password : String,
-    PasswordSalt : String,
-    Createdate : Date,
-    Modifiedate : Date,
-    IsActive : Boolean,
-    IsDeleted : Boolean,
-    IsVerified : Boolean
+    Name : String,
+    UserName: String,
+    Email: String,
+    Gender : String,
+    Password: String,
+    PasswordSalt: String,
+    Createdate: {
+        type: Date,
+        default: new Date()
+    },
+    Modifiedate: {
+        type: Date,
+        default: null
+    },
+    IsActive: {
+        type: Boolean,
+        default: true
+    },
+    IsDeleted: {
+        type: Boolean,
+        default: false
+    },
+    IsVerified: {
+        type: Boolean,
+        default: false
+    },
+    IsTwoFactorAuthEnabled : {
+        type : Boolean,
+        default: false
+    },
+    Bio: {
+        type :String,
+        default: null
+    },
+    ContactNumber: Number,
+    RecoveryMail: {
+        type: String,
+        default: null
+    },
+    Background: {
+        type: mongoose.Schema.Types.ObjectId,
+        default: null
+    },
+    Interests: {
+        type: mongoose.Schema.Types.Array,
+        default: null
+    }
 });
 
 const validateEmail = Schema({
-    Email : String,
-    IsDeleted : Boolean
-})
-
-const MovieS =  Schema({
-    name : String,
-    genere : Array
+    Email: String,
+    IsDeleted: Boolean
 });
 
-module.exports = MovieSchema = mongoose.model("movie",MovieS);
-module.exports = registerSchema = mongoose.model("user",Register);
+module.exports = registerSchema = mongoose.model("user", Register);
